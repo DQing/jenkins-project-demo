@@ -17,6 +17,7 @@ app.get('/hello', function (req, res) {
         }
     );
 });
-app.listen(4000, function () {
+app.listen(4444, function () {
     console.log('listening on port 4000');
 });
+module.exports = app;
