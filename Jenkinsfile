@@ -1,26 +1,29 @@
 node {
+    env.NODE_ENV = "test"
+
+    print "Environment will be : ${env.NODE_ENV}"
 
   stage ('Checkout') {
     git 'https://github.com/DQing/jenkins-project-demo'
   }
 
   stage ('Create Virtualenv') {
-    sh 'node -v'
+    sh '${nvmSource}node -v'
   }
 
   stage ('Install') {
-    sh 'npm i'
+    sh '${nvmSource}npm i'
   }
 
   stage ('Unit Test') {
-    sh 'webpack'
+    sh '${nvmSource}webpack'
   }
 
   stage ('E2E Test') {
-    sh 'npm test'
+    sh '${nvmSource}npm test'
   }
 
   stage ('Deploy') {
-    sh 'npm start'
+    sh '${nvmSource}npm start'
   }
 }
