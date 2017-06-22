@@ -1,8 +1,7 @@
 node {
-    env.NODE_ENV = "test"
-
-    print "Environment will be : ${env.NODE_ENV}"
-
+  def mvnHome = tool 'M3'
+  env.PATH = "${mvnHome}/bin:${env.PATH}"
+  sh 'mvn -B clean verify'
   stage ('Checkout') {
     git 'https://github.com/DQing/jenkins-project-demo'
   }
